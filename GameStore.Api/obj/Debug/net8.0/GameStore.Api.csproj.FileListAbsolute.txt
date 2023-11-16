@@ -23,3 +23,10 @@ A:\dotnet\gamestore\GameStore.Api\obj\Debug\net8.0\refint\GameStore.Api.dll
 A:\dotnet\gamestore\GameStore.Api\obj\Debug\net8.0\GameStore.Api.pdb
 A:\dotnet\gamestore\GameStore.Api\obj\Debug\net8.0\GameStore.Api.genruntimeconfig.cache
 A:\dotnet\gamestore\GameStore.Api\obj\Debug\net8.0\ref\GameStore.Api.dll
+A:\dotnet\gamestore\GameStore.Api\obj\Debug\net8.0\GameStore.Api.sourcelink.json
+A:\dotnet\gamestore\GameStore.Api\bin\Debug\net8.0\Microsoft.OpenApi.dll
+A:\dotnet\gamestore\GameStore.Api\bin\Debug\net8.0\MinimalApis.Extensions.dll
+A:\dotnet\gamestore\GameStore.Api\bin\Debug\net8.0\MiniValidation.dll
+A:\dotnet\gamestore\GameStore.Api\obj\Debug\net8.0\GameStore.Api.csproj.AssemblyReference.cache
+A:\dotnet\gamestore\GameStore.Api\obj\Debug\net8.0\GameStore.Api.MvcApplicationPartsAssemblyInfo.cs
+A:\dotnet\gamestore\GameStore.Api\obj\Debug\net8.0\GameStore.Api.csproj.CopyComplete

@@ -1,6 +1,6 @@
 using GameStore.Api.Entities;
-
-List <Game> games = new(){
+const string GetNameEndpointName = "GetGame";
+List<Game> games = new(){
     new Game(){
         Id = 1,
         Name = "Street Fighter II",
@@ -37,7 +37,40 @@ List <Game> games = new(){
 };
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
-
-app.MapGet("/", () => "Hello World!");
-
+var group = app.MapGroup("games/").WithParameterValidation();
+//Get all games
+group.MapGet("/", () => games);
+//get game per id
+group.MapGet("/{id}", (int id) =>
+{
+    Game? game = games.Find(game => game.Id == id);
+    if (game is null) return Results.NotFound();
+    return Results.Ok(game);
+}).WithName(GetNameEndpointName);
+//Post Game Method
+group.MapPost("/", (Game game) =>
+{
+    game.Id = games.Max(game => game.Id) + 1;
+    games.Add(game);
+    return Results.CreatedAtRoute(GetNameEndpointName, new { id = game.Id }, game);
+});
+//Put game method
+group.MapPut("/{id}", (int id, Game updateGame) =>
+{
+    Game? existingGame = games.Find(game => game.Id == id);
+    if (existingGame is null) return Results.NotFound();
+    existingGame.Name = updateGame.Name;
+    existingGame.Genre = updateGame.Genre;
+    existingGame.Price = updateGame.Price;
+    existingGame.ReleaseDate = updateGame.ReleaseDate;
+    existingGame.ImgUrl = updateGame.ImgUrl;
+    return Results.NoContent();
+});
+//Delete game method
+group.MapDelete("/{id}", (int id) =>
+{
+    Game? game = games.Find(game => game.Id == id);
+    if (game is not null) games.Remove(game);
+    return Results.NoContent();
+});
 app.Run();
