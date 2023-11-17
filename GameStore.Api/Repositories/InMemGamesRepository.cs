@@ -2,7 +2,7 @@ using GameStore.Api.Entities;
 
 namespace GameStore.Api.Repositories
 {
-    public class InMemGamesRepository
+    public class InMemGamesRepository : IGamesRepository
     {
         private readonly List<Game> games = new()
         {
@@ -51,7 +51,7 @@ namespace GameStore.Api.Repositories
 
         public Game? Get(int id)
         {
-            return games.FirstOrDefault(game => game.Id == id);
+            return games.Find(game => game.Id == id);
         }
         public void Create(Game game)
         {
