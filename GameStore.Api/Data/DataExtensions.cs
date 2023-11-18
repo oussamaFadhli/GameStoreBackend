@@ -5,15 +5,14 @@ namespace GameStore.Api.Data;
 
 public static class DataExtensions
 {
-    public static void InitialzeDb(this IServiceProvider serviceProvider)
+    public static async Task InitialzeDbAsync(this IServiceProvider serviceProvider)
     {
         using var scope = serviceProvider.CreateScope();
         var dbContext = scope.ServiceProvider.GetRequiredService<GameStoreContext>();
-        dbContext.Database.Migrate();
+        await dbContext.Database.MigrateAsync();
     }
-    public static IServiceCollection AddRepositories(
-        this IServiceCollection services,
-        IConfiguration configuration
+    public static IServiceCollection AddRepositories(this IServiceCollection services,
+    IConfiguration configuration
     )
     {
         var connString = configuration.GetConnectionString("DefaultConnection");
