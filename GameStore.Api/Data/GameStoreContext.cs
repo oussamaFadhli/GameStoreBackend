@@ -6,14 +6,12 @@ namespace GameStore.Api.Data
 {
     public class GameStoreContext : DbContext
     {
-        private DbSet<Game> games = null!;
-
         public GameStoreContext(DbContextOptions<GameStoreContext> options) : base(options)
         {
-            games = Set<Game>();
+            Games = Set<Game>();
         }
 
-        public DbSet<Game> Games => games;
+        public DbSet<Game> Games { get; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

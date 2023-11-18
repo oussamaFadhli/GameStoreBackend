@@ -4,15 +4,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GameStore.Api.Repositories;
 
-public class EntityFrameworkGamesRepository : IGamesRepository
+public class EntityFrameworkGamesRepository(GameStoreContext dbContext) : IGamesRepository
 {
 
-    private readonly GameStoreContext dbContext;
-
-    public EntityFrameworkGamesRepository(GameStoreContext dbContext)
-    {
-        this.dbContext = dbContext;
-    }
+    private readonly GameStoreContext dbContext = dbContext;
 
     public GameStoreContext DbContext => dbContext;
     public async Task<IEnumerable<Game>> GetAllAsync()
